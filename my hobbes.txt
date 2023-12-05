@@ -1,0 +1,8 @@
+<!Doctype html>
+
+<html>
+<head>Review of HTML Tags</head>
+<title>about me </title>
+<body>
+<h1>This is my first page - Biography </h1>
+<h2>personal</h2>
