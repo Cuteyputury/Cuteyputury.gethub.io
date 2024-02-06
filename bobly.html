@@ -1,0 +1,164 @@
+<!DOCTYPE>
+
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+<title>js brum kit</title>
+<link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+
+
+
+
+<h1> diff sound</h1>
+<div class = 'keys'>
+<div data-key='65' class='key'>
+<kbd> a <kbd>
+<span class = 'sound'>clip</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='83' class='key'>
+<kbd> s <kbd>
+<span class = 'sound'>hihat</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='68' class='key'>
+<kbd> d <kbd>
+<span class = 'sound'>boom</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='70' class='key'>
+<kbd> f <kbd>
+<span class = 'sound'>openhat</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='71' class='key'>
+<kbd> g <kbd>
+<span class = 'sound'>snare</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='72' class='key'>
+<kbd> h <kbd>
+<span class = 'sound'>tom</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='73' class='key'>
+<kbd> j <kbd>
+<span class = 'sound'>kick</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='74' class='key'>
+<kbd> k <kbd>
+<span class = 'sound'>ride</span>
+</div>
+
+<div class = 'keys'>
+<div data-key='75' class='key'>
+<kbd> l <kbd>
+<span class = 'sound'>tink</span>
+</div>
+
+</div>
+
+<audio data-key='65' src='sound/clap.wav'> </audio>
+<audio data-key='83' src='sound/hihat.wav'> </audio>
+<audio data-key='68' src='sound/boom.wav'> </audio>
+<audio data-key='70' src='sound/openhat.wav'> </audio>
+<audio data-key='71' src='sound/snare.wav'> </audio>
+<audio data-key='72' src='sound/tom.wav'> </audio>
+<audio data-key='73' src='sound/kick.wav'> </audio>
+<audio data-key='74' src='sound/ride.wav'> </audio>
+<audio data-key='75' src='sound/tink.wav'> </audio>
+
+
+<style>
+
+
+
+<script>
+function removeTransition(e) {
+  if  (e.propertyName !== 'transform') return;
+  e.target.classList.remove('playing');
+}
+
+function playSound(e){
+const audio = document.querySelector(
+'audio[data-key='${e.keyCode}"]');
+const key= document.querySelector(
+'div[data-key='${e.keyCode}"]');
+if(!audio) return;
+
+  key.classList.add('playing');
+  audio.currentTime = 0;
+  audio.play();
+  }
+
+const keys = Array.from(document.querySelectorALL('.key'));
+keys.forEach(key => key.addEventListener(
+'transitionend', removeTransition));
+window.addEventListener('keydown', playSound);
+</script>
+
+html {
+  font-size: 10px;
+  background: url('./background.jpg') bottom center;
+  background-size: cover;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+}
+</style>
+</body>
+
+</html>
